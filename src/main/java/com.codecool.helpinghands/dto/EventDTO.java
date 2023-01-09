@@ -17,4 +17,7 @@ public class EventDTO {
     private String city;
     private LocalDate dateOfEvent;
     private byte[] image;
+
+    private String address;
+    private String postalCode;
 }

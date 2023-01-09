@@ -31,11 +31,14 @@ public class Event {
     private LocalDate dateOfEvent;
     private String slots;
     private String imagePath;
+    private String address;
+    private String postalCode;
+
     @OneToMany
     @JsonIgnore
     private Set<Slot> eventSlots;
 
-    public Event(String eventTitle, String eventDescription, EventCategory eventCategory, String city, String slots, String imagePath, LocalDate dateOfEvent) {
+    public Event(String eventTitle, String eventDescription, EventCategory eventCategory, String city, String slots, String imagePath, LocalDate dateOfEvent, String address, String postalCode) {
         this.eventTitle = eventTitle;
         this.eventDescription = eventDescription;
         this.eventCategory = eventCategory;
@@ -44,5 +47,7 @@ public class Event {
         this.imagePath = imagePath;
         this.dateOfEvent = dateOfEvent;
         this.dateCreated = LocalDateTime.now();
+        this.address = address;
+        this.postalCode = postalCode;
     }
 }

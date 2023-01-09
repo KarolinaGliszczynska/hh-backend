@@ -17,7 +17,7 @@ public class NewEventDTO {
     private String eventDescription;
     private String address;
     private String city;
-    private String postalCode;
+   private String postalCode;
     private byte[] image;
     private String[] eventSlots;
     private byte[] eventFiles;

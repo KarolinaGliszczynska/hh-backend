@@ -55,7 +55,7 @@ public class EventController {
 
     @PostMapping(value = "/events/createNew", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> createEvent(@RequestBody NewEventDTO e) {
-        Event event = eventService.addEvent(e.getCity(), e.getEventCategory(), e.getEventDescription(), e.getEventTitle(), "", "XX", e.getDateOfEvent());
+        Event event = eventService.addEvent(e.getCity(), e.getEventCategory(), e.getEventDescription(), e.getEventTitle(), "", "XX", e.getDateOfEvent(), e.getAddress(), e.getPostalCode());
         EventDTO eventDTO = eventService.convertEventToEventDto(event);
 
         System.out.println("New event created");
@@ -84,9 +84,11 @@ public class EventController {
             @RequestParam("eventTitle") String eventTitle,
             @RequestParam("imagePath") String imagePath,
             @RequestParam("slots") String slots,
-            @RequestParam("dateOfEvent") String dateOfEvent
+            @RequestParam("dateOfEvent") String dateOfEvent,
+            @RequestParam("address") String address,
+            @RequestParam("postalCode") String postalCode
     ){
-        Event event = eventService.addEvent(city, eventCategory, eventDescription, eventTitle, imagePath, slots, dateOfEvent);
+        Event event = eventService.addEvent(city, eventCategory, eventDescription, eventTitle, imagePath, slots, dateOfEvent, address, postalCode);
         EventDTO eventDTO = eventService.convertEventToEventDto(event);
         return new ResponseEntity<>(
                 eventDTO,
@@ -116,7 +118,7 @@ public class EventController {
         imageDataService.addPictureToEvent(file, event);
         return new ResponseEntity<>(
                 "New image added",
-                HttpStatus.OK);
+                HttpStatus.NOT_FOUND);
     }
 
     @GetMapping(path = "/")
