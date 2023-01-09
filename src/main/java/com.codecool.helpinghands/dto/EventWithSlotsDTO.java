@@ -19,4 +19,7 @@ public class EventWithSlotsDTO {
     private LocalDate dateOfEvent;
     private byte[] image;
     private Set<SlotDTO> eventSlots;
+
+    private String address;
+    private String postalCode;
 }
